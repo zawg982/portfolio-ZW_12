@@ -21,7 +21,7 @@ header {
 }
 
 #pageTitle {
-  font-size: 2em;
+  font-size: 2.2em; /* increased ~10% from 2em */
   font-weight: bold;
   margin-bottom: 10px;
 }
@@ -36,6 +36,7 @@ nav button {
   border-radius: 10px;
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
+  font-size: 1.1em; /* slightly bigger */
 }
 
 nav button.active,
@@ -48,11 +49,12 @@ nav button:hover {
 section {
   text-align: center;
   padding: 20px;
-  max-width: 800px;
-  margin: auto;
+  max-width: 880px; /* increased 10% from 800px */
+  margin: 0 auto 40px auto; /* center horizontally + bottom margin */
   background: rgba(0, 0, 0, 0.25);
   border-radius: 12px;
   backdrop-filter: blur(10px);
+  font-size: 1.1em; /* slight overall scale up */
 }
 
 .hidden {
@@ -64,7 +66,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-width: 400px;
+  max-width: 440px; /* increased 10% from 400px */
   margin: auto;
 }
 
@@ -75,6 +77,7 @@ input, textarea {
   background: rgba(255, 255, 255, 0.1);
   color: #e0f7ff;
   backdrop-filter: blur(5px);
+  font-size: 1em;
 }
 
 input::placeholder,
@@ -91,6 +94,7 @@ textarea::placeholder {
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.2s ease;
+  font-size: 1.1em;
 }
 
 .send-btn:hover {
@@ -130,7 +134,7 @@ textarea::placeholder {
 
 .project-img {
   width: 100%;
-  max-width: 400px;
+  max-width: 440px; /* increased 10% from 400px */
   border-radius: 12px;
   margin-bottom: 10px;
 }
@@ -141,11 +145,20 @@ textarea::placeholder {
     display: block;
     width: 100%;
     margin: 5px 0;
+    font-size: 1em; /* reduce a bit on small */
   }
 
   .project-img {
     width: 100%;
+    max-width: 100%;
+  }
+
+  section {
+    max-width: 100%; /* full width on small */
+    font-size: 1em;
+  }
+
+  form {
+    max-width: 100%;
   }
 }
-
-
