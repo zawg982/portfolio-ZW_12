@@ -27,16 +27,13 @@
     <!-- Contact -->
     <section id="contactSection" class="hidden">
       <h1>Contact Me</h1>
-      <form id="contactForm" action="https://formsubmit.co/xboxzacheus@gmail.com" method="POST">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-
+      <form id="contactForm">
         <input type="email" name="email" placeholder="Your Email" required />
         <input type="text" name="discord" placeholder="Your Discord Username" required />
         <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
         <button class="send-btn" type="submit">Send</button>
         <div id="envelopeAnimation" class="envelope hidden">✉️</div>
-        <p id="status"></p>
+        <p id="status" style="color: white; margin-top: 10px;"></p>
       </form>
     </section>
 
@@ -44,22 +41,79 @@
     <section id="workSection" class="hidden scrollable">
       <h1>Past Work</h1>
       <div class="project">
-        <img src="https://media.discordapp.net/attachments/1395134123261034507/1395135365270212768/image.png?format=webp&quality=lossless" alt="Legacy Unbound" class="project-img" />
+        <img src="https://media.discordapp.net/attachments/1395134123261034507/1395135365270212768/image.png?format=webp&quality=lossless" alt="House" class="project-img" />
         <h2>Legacy Unbound</h2>
         <p><strong>Task:</strong> Building</p>
         <p><strong>Charged:</strong> R$400</p>
         <a href="https://www.roblox.com/communities/418594346/Legacy-Unbound-Official-Studio#!/about" target="_blank">View Group</a>
       </div>
       <div class="project">
-        <img src="https://media.discordapp.net/attachments/1395134123261034507/1395135365270212768/image.png?format=webp&quality=lossless" alt="Fantasy Building Showcase" class="project-img" />
+        <img src="https://media.discordapp.net/attachments/1395134123261034507/1395135643763474554/image.png?format=webp&quality=lossless" alt="CABIN" class="project-img" />
         <h2>Legacy Unbound</h2>
         <p><strong>Task:</strong> Building</p>
         <p><strong>Charged:</strong> R$400</p>
-        <a href="https://www.roblox.com/games/987654321" target="_blank">View Game</a>
+        <a href="https://www.roblox.com/communities/418594346/Legacy-Unbound-Official-Studio#!/about" target="_blank">View Game</a>
       </div>
     </section>
   </main>
 
-  <script src="script.js"></script>
+  <script>
+    const aboutBtn = document.getElementById("aboutBtn");
+    const contactBtn = document.getElementById("contactBtn");
+    const workBtn = document.getElementById("workBtn");
+    const aboutSection = document.getElementById("aboutSection");
+    const contactSection = document.getElementById("contactSection");
+    const workSection = document.getElementById("workSection");
+    const pageTitle = document.getElementById("pageTitle");
+    const contactForm = document.getElementById("contactForm");
+    const envelope = document.getElementById("envelopeAnimation");
+    const statusText = document.getElementById("status");
+
+    function showSection(sectionToShow, titleText, activeBtn) {
+      [aboutSection, contactSection, workSection].forEach(sec => sec.classList.add("hidden"));
+      sectionToShow.classList.remove("hidden");
+
+      [aboutBtn, contactBtn, workBtn].forEach(btn => btn.classList.remove("active"));
+      activeBtn.classList.add("active");
+
+      pageTitle.textContent = titleText;
+    }
+
+    aboutBtn.onclick = () => showSection(aboutSection, "About Me", aboutBtn);
+    contactBtn.onclick = () => showSection(contactSection, "Contact Me", contactBtn);
+    workBtn.onclick = () => showSection(workSection, "Past Work", workBtn);
+
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      envelope.classList.remove("hidden");
+
+      const formData = new FormData(contactForm);
+      formData.append("_captcha", "false");
+      formData.append("_template", "table");
+
+      try {
+        const res = await fetch("https://formsubmit.co/ajax/xboxzacheus@gmail.com", {
+          method: "POST",
+          headers: { "Accept": "application/json" },
+          body: formData
+        });
+
+        if (res.ok) {
+          statusText.textContent = "Email sent successfully!";
+          contactForm.reset();
+        } else {
+          statusText.textContent = "Failed to send email. Try again.";
+        }
+      } catch (err) {
+        statusText.textContent = "An error occurred. Try again later.";
+      }
+
+      setTimeout(() => {
+        envelope.classList.add("hidden");
+      }, 1000);
+    });
+
+    showSection(aboutSection, "About Me", aboutBtn);
+  </script>
 </body>
 </html>
