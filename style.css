@@ -9,16 +9,9 @@
 body {
   min-height: 100vh;
   color: #e0f7ff;
-  background: linear-gradient(-45deg, #00008b, #0000ff, #00bfff, #00ffff, #e0ffff, #ffffff);
-  background-size: 1000% 1000%;
-  animation: gradientBG 20s ease infinite;
+  background: linear-gradient(to bottom right, #00008b, #0000ff, #00bfff, #00ffff, #e0ffff, #ffffff);
+  background-attachment: fixed;
   padding: 20px;
-}
-
-@keyframes gradientBG {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 /* Header */
