@@ -1,80 +1,177 @@
-const aboutBtn = document.getElementById('aboutBtn');
-const contactBtn = document.getElementById('contactBtn');
-const workBtn = document.getElementById('workBtn');
-const feedbackBtn = document.getElementById('feedbackBtn');
-const aboutSection = document.getElementById('aboutSection');
-const contactSection = document.getElementById('contactSection');
-const workSection = document.getElementById('workSection');
-const feedbackSection = document.getElementById('feedbackSection');
-const pageTitle = document.getElementById('pageTitle');
-// Contact pieces (existing)
-const contactForm = document.getElementById('contactForm');
-const envelope = document.getElementById('envelopeAnimation');
-const statusText = document.getElementById('status');
-// Feedback pieces
-const feedbackForm = document.getElementById('feedbackForm');
-const feedbackList = document.getElementById('feedbackList');
-
-// Navigation handler
-function showSection(sec, title, btn) {
-  [aboutSection, contactSection, workSection, feedbackSection]
-    .forEach(s=>s.classList.add('hidden'));
-  sec.classList.remove('hidden');
-  [aboutBtn, contactBtn, workBtn, feedbackBtn]
-    .forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  pageTitle.textContent = title;
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
 }
 
-aboutBtn.onclick = () => showSection(aboutSection, 'About Me', aboutBtn);
-contactBtn.onclick = () => showSection(contactSection, 'Contact Me', contactBtn);
-workBtn.onclick = () => showSection(workSection, 'Past Work', workBtn);
-feedbackBtn.onclick = () => showSection(feedbackSection, 'Feedback', feedbackBtn);
-showSection(aboutSection, 'About Me', aboutBtn);
+body {
+  min-height: 100vh;
+  color: #e0f7ff;
+  background: linear-gradient(to bottom right, #00008b, #0000ff, #00bfff, #00ffff, #e0ffff, #ffffff);
+  background-attachment: fixed;
+  padding: 20px;
+}
 
-// Contact submission (unchanged)
-contactForm.addEventListener('submit', async e=>{
-  e.preventDefault();
-  envelope.classList.remove('hidden');
-  const formData = new FormData(contactForm);
-  formData.append('_captcha','false');
-  formData.append('_template','table');
-  try {
-    const res = await fetch('https://formsubmit.co/ajax/xboxzacheus@gmail.com',{method:'POST',headers:{'Accept':'application/json'},body: formData});
-    statusText.textContent = res.ok ? 'Email sent successfully!' : 'Failed to send email.';
-    contactForm.reset();
-  } catch(err) {
-    statusText.textContent = 'An error occurred.';
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#pageTitle {
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Nav Buttons */
+nav button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid white;
+  color: white;
+  padding: 10px 20px;
+  margin: 0 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+nav button.active,
+nav button:hover {
+  background: white;
+  color: #001f3f;
+}
+
+/* Sections */
+section {
+  text-align: center;
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Contact Form */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  margin: auto;
+}
+
+input, textarea {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #e0f7ff;
+  backdrop-filter: blur(5px);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #b3e5fc;
+}
+
+.send-btn {
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #00ffff;
+  color: #001f3f;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.send-btn:hover {
+  transform: scale(1.05);
+}
+
+.envelope {
+  font-size: 2em;
+  margin-top: 10px;
+  animation: fly 1s ease forwards;
+}
+
+@keyframes fly {
+  0% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(200px); opacity: 0; }
+}
+
+.status-text {
+  margin-top: 10px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Project Section */
+.project {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  margin: 20px 0;
+  transition: transform 0.3s;
+  color: white;
+}
+
+.project:hover {
+  transform: translateY(-5px);
+}
+
+.project-img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+/* Feedback Section */
+#feedbackList {
+  margin-top: 20px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.feedback-entry {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
+  text-align: left;
+  color: #ffffff;
+}
+
+.feedback-entry small {
+  color: #b3e5fc;
+  font-size: 0.85rem;
+  display: block;
+  margin-top: 4px;
+}
+
+.feedback-entry:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+  nav button {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
   }
-  setTimeout(()=>envelope.classList.add('hidden'),1000);
-});
 
-// Feedback handling
-let feedbackEntries = JSON.parse(localStorage.getItem('feedbackEntries')||'[]');
-let guestCount = feedbackEntries.length;
-
-function renderFeedback(){
-  feedbackList.innerHTML = '';
-  feedbackEntries.forEach((entry,i)=>{
-    const div = document.createElement('div');
-    div.className = 'feedback-entry';
-    const guest = `Guest ${i+1}`;
-    div.innerHTML = `<strong>${guest}:</strong> ${entry.text}<small>${entry.time}</small>`;
-    feedbackList.appendChild(div);
-  });
+  .project-img {
+    width: 100%;
+  }
 }
-
-feedbackForm.addEventListener('submit', e=>{
-  e.preventDefault();
-  const text = feedbackForm.feedback.value.trim();
-  if(!text) return;
-  const now = new Date();
-  const time = now.toLocaleString();
-  feedbackEntries.push({ text, time });
-  localStorage.setItem('feedbackEntries', JSON.stringify(feedbackEntries));
-  feedbackForm.reset();
-  renderFeedback();
-});
-
-// initial load
-renderFeedback();
