@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ZW_12 Portfolio</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="https://media.discordapp.net/attachments/1395134123261034507/1395135365270212768/image.png?format=webp&quality=lossless" />
 </head>
 <body>
   <header>
@@ -29,10 +30,12 @@
       <form id="contactForm" action="https://formsubmit.co/xboxzacheus@gmail.com" method="POST">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
+
         <input type="email" name="email" placeholder="Your Email" required />
         <input type="text" name="discord" placeholder="Your Discord Username" required />
         <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
         <button class="send-btn" type="submit">Send</button>
+        <div id="envelopeAnimation" class="envelope hidden">✉️</div>
         <p id="status"></p>
       </form>
     </section>
@@ -41,12 +44,14 @@
     <section id="workSection" class="hidden scrollable">
       <h1>Past Work</h1>
       <div class="project">
+        <img src="https://media.discordapp.net/attachments/1395134123261034507/1395135365270212768/image.png?format=webp&quality=lossless" alt="Zombie Survival Game" class="project-img" />
         <h2>Zombie Survival Game</h2>
         <p><strong>Task:</strong> Scripting</p>
         <p><strong>Charged:</strong> $40</p>
         <a href="https://www.roblox.com/groups/1234567" target="_blank">View Game/Group</a>
       </div>
       <div class="project">
+        <img src="https://media.discordapp.net/attachments/1395134123261034507/1395135365270212768/image.png?format=webp&quality=lossless" alt="Fantasy Building Showcase" class="project-img" />
         <h2>Fantasy Building Showcase</h2>
         <p><strong>Task:</strong> Building</p>
         <p><strong>Charged:</strong> $30</p>
