@@ -66,6 +66,7 @@ form {
   padding: 2rem;
   border-radius: 12px;
   box-shadow: 0 0 10px #222;
+  position: relative;
 }
 
 form input,
@@ -125,4 +126,38 @@ form textarea:focus {
 
 .project a:hover {
   text-decoration: underline;
+}
+
+.project-img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 10px #000;
+}
+
+.envelope {
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: flyEnvelope 1s ease-in forwards;
+  z-index: 999;
+}
+
+.envelope.hidden {
+  display: none;
+}
+
+@keyframes flyEnvelope {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(150%, -50%) scale(0.5);
+    opacity: 0;
+  }
 }
