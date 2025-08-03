@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF‑8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ZW_12 Portfolio</title>
   <link rel="stylesheet" href="style.css" />
@@ -14,13 +14,14 @@
       <button id="aboutBtn" class="active">About Me</button>
       <button id="contactBtn">Contact Me</button>
       <button id="workBtn">Past Work</button>
+      <button id="feedbackBtn">Feedback</button>
     </nav>
   </header>
 
   <main>
     <section id="aboutSection">
       <h1>Hello, I'm ZW_12</h1>
-      <p>I’m a creative and efficient developer with 1 year of scripting experience, 3 months of commissions experience, and strong building skills in the Stud style. Do not think my short experience will effect my preformance in any way, I will still be very fast and reliable.</p>
+      <p>I’m a creative and efficient developer with 1 year of scripting experience, 3 months of communication experience, and strong building skills in the Stud style. I prioritize results over how long I’ve been doing this.</p>
     </section>
 
     <section id="contactSection" class="hidden">
@@ -31,7 +32,7 @@
         <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
         <button class="send-btn" type="submit">Send</button>
         <div id="envelopeAnimation" class="envelope hidden">✉️</div>
-        <p id="status" class="status-text"></p>
+        <p id="status"></p>
       </form>
     </section>
 
@@ -51,6 +52,15 @@
         <p><strong>Charged:</strong> R$400</p>
         <a href="https://www.roblox.com/communities/418594346/Legacy-Unbound-Official-Studio#!/about" target="_blank">View Group</a>
       </div>
+    </section>
+
+    <section id="feedbackSection" class="hidden">
+      <h1>Feedback</h1>
+      <form id="feedbackForm">
+        <textarea name="feedback" placeholder="Your feedback..." rows="4" required></textarea>
+        <button class="send-btn" type="submit">Submit</button>
+      </form>
+      <div id="feedbackList"></div>
     </section>
   </main>
 
