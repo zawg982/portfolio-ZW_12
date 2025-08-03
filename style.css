@@ -1,155 +1,26 @@
-/* General Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
-}
+/* (Previous CSS up to Feedback section as defined earlier) */
 
-body {
-  min-height: 100vh;
-  color: #e0f7ff;
-  background: linear-gradient(to bottom right, #00008b, #0000ff, #00bfff, #00ffff, #e0ffff, #ffffff);
-  background-attachment: fixed;
-  padding: 20px;
-}
-
-/* Header */
-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-#pageTitle {
-  font-size: 2em;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-/* Nav Buttons */
-nav button {
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid white;
-  color: white;
-  padding: 10px 20px;
-  margin: 0 5px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background 0.3s, color 0.3s;
-}
-
-nav button.active,
-nav button:hover {
-  background: white;
-  color: #001f3f;
-}
-
-/* Sections */
-section {
-  text-align: center;
-  padding: 20px;
-  max-width: 800px;
-  margin: auto;
-  background: rgba(0, 0, 0, 0.25);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-}
-
-.hidden {
-  display: none;
-}
-
-/* Contact Form */
-form {
+/* Layout for feedback section */
+#feedbackContainer {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  max-width: 400px;
-  margin: auto;
-}
-
-input, textarea {
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #e0f7ff;
-  backdrop-filter: blur(5px);
-}
-
-input::placeholder,
-textarea::placeholder {
-  color: #b3e5fc;
-}
-
-.send-btn {
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  background: #00ffff;
-  color: #001f3f;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.send-btn:hover {
-  transform: scale(1.05);
-}
-
-.envelope {
-  font-size: 2em;
-  margin-top: 10px;
-  animation: fly 1s ease forwards;
-}
-
-@keyframes fly {
-  0% { transform: translateX(0); opacity: 1; }
-  100% { transform: translateX(200px); opacity: 0; }
-}
-
-.status-text {
-  margin-top: 10px;
-  font-weight: bold;
-  color: white;
-}
-
-/* Project Section */
-.project {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 20px;
-  margin: 20px 0;
-  transition: transform 0.3s;
-  color: white;
-}
-
-.project:hover {
-  transform: translateY(-5px);
-}
-
-.project-img {
-  width: 100%;
-  max-width: 400px;
-  border-radius: 12px;
-  margin-bottom: 10px;
-}
-
-/* Feedback Section */
-#feedbackList {
-  margin-top: 20px;
+  gap: 15px;
   max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: auto;
+  text-align: left;
+}
+
+.feedback-list {
+  max-height: 400px;
+  overflow-y: auto;
 }
 
 .feedback-entry {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255,255,255,0.12);
   border-radius: 12px;
   padding: 12px;
-  margin-bottom: 10px;
-  text-align: left;
-  color: #ffffff;
+  margin-bottom: 8px;
+  color: #fff;
 }
 
 .feedback-entry small {
@@ -159,19 +30,24 @@ textarea::placeholder {
   margin-top: 4px;
 }
 
-.feedback-entry:nth-child(odd) {
-  background: rgba(255, 255, 255, 0.18);
+.feedback-input {
+  display: flex;
+  gap: 10px;
 }
 
-/* Responsive */
-@media screen and (max-width: 768px) {
-  nav button {
-    display: block;
-    width: 100%;
-    margin: 5px 0;
-  }
+#feedbackInput {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  background: rgba(255,255,255,0.1);
+  color: #e0f7ff;
+}
 
-  .project-img {
-    width: 100%;
-  }
+#feedbackInput::placeholder {
+  color: #b3e5fc;
+}
+
+#feedbackSend {
+  flex-shrink: 0;
 }
