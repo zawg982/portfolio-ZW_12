@@ -1,347 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ZW_12 Portfolio</title>
-<style>
-  /* Reset and base */
-  * {
-    box-sizing: border-box;
-  }
-  body {
-    margin: 0;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    background: #000;
-    color: #eee;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-  header {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid #444;
-    background: #111;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-  }
-  #pageTitle {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #fff;
-  }
-  nav button {
-    background: transparent;
-    border: none;
-    color: #ccc;
-    margin-left: 1rem;
-    font-size: 1rem;
-    padding: 0.4rem 0.8rem;
-    cursor: pointer;
-    position: relative;
-    transition: color 0.3s ease;
-  }
-  nav button:hover {
-    color: #fff;
-  }
-  nav button.active {
-    color: #fff;
-    text-decoration: underline;
-    text-underline-offset: 4px;
-  }
-
-  main {
-    flex-grow: 1;
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 0 1rem;
-  }
-
-  section {
-    display: block;
-  }
-  .hidden {
-    display: none;
-  }
-
-  /* About section */
-  #aboutSection h1 {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-  }
-  #aboutSection p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-    max-width: 600px;
-  }
-
-  /* Contact section */
-  #contactSection h1 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-  }
-  form {
-    display: flex;
-    flex-direction: column;
-    max-width: 400px;
-    margin: 0 auto;
-  }
-  input[type="email"],
-  input[type="text"],
-  textarea {
-    background: #222;
-    border: 1px solid #555;
-    border-radius: 10px;
-    padding: 0.8rem 1rem;
-    margin-bottom: 1rem;
-    color: #eee;
-    font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-    resize: vertical;
-  }
-  input[type="email"]:focus,
-  input[type="text"]:focus,
-  textarea:focus {
-    outline: none;
-    border-color: #eee;
-    box-shadow: 0 0 8px 1px #eee;
-  }
-  textarea {
-    min-height: 120px;
-  }
-  button.send-btn {
-    border: 2px solid #eee;
-    border-radius: 25px;
-    background: transparent;
-    color: #eee;
-    font-weight: 600;
-    padding: 0.6rem 1.5rem;
-    cursor: pointer;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
-    align-self: center;
-    width: 120px;
-  }
-  button.send-btn:hover {
-    background: #eee;
-    color: #000;
-    box-shadow: 0 0 12px 3px #eee;
-  }
-  #status {
-    margin-top: 0.7rem;
-    min-height: 1.2rem;
-    text-align: center;
-    font-weight: 600;
-  }
-
-  /* Envelope animation */
-  .envelope {
-    position: fixed;
-    font-size: 2rem;
-    color: #fff;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    pointer-events: none;
-    animation: flyEnvelope 1s ease forwards;
-    z-index: 1000;
-  }
-  .hidden.envelope {
-    display: none;
-  }
-  @keyframes flyEnvelope {
-    0% {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
-    100% {
-      opacity: 0;
-      transform: translate(120vw, -50%) scale(0.5);
-    }
-  }
-
-  /* Past Work */
-  #workSection h1 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-  }
-  .scrollable {
-    max-height: 65vh;
-    overflow-y: auto;
-  }
-  .project {
-    background: #111;
-    border: 1px solid #444;
-    padding: 1rem;
-    border-radius: 12px;
-    margin-bottom: 1rem;
-    box-shadow: 0 0 8px 0 #222 inset;
-    transition: box-shadow 0.3s ease;
-  }
-  .project:hover {
-    box-shadow: 0 0 14px 1px #eee inset;
-  }
-  .project-img {
-    width: 100%;
-    max-height: 180px;
-    object-fit: contain;
-    border-radius: 10px;
-    margin-bottom: 0.7rem;
-    filter: grayscale(100%);
-    transition: filter 0.3s ease;
-  }
-  .project-img:hover {
-    filter: grayscale(0%);
-  }
-  .project h2 {
-    margin: 0.3rem 0;
-  }
-  .project p {
-    margin: 0.15rem 0;
-  }
-  .project a {
-    color: #eee;
-    text-decoration: underline;
-  }
-  .project a:hover {
-    color: #fff;
-  }
-
-  /* Responsive tweaks */
-  @media (max-width: 600px) {
-    nav button {
-      margin-left: 0.5rem;
-      padding: 0.3rem 0.6rem;
-      font-size: 0.9rem;
-    }
-    main {
-      margin: 1rem;
-      max-width: 100%;
-    }
-    #aboutSection p {
-      font-size: 1rem;
-    }
-    input[type="email"],
-    input[type="text"],
-    textarea {
-      max-width: 100%;
-      font-size: 1rem;
-    }
-    button.send-btn {
-      width: 100%;
-      max-width: 250px;
-      padding: 0.7rem;
-    }
-  }
-</style>
-<link rel="icon" type="image/png" href="images/ZW_12_Pfp_3.png" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ZW_12 Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="images/ZW_12_Pfp_3.png" />
 </head>
 <body>
-<header>
-  <div id="pageTitle">About Me</div>
-  <nav>
-    <button id="aboutBtn" class="active">About Me</button>
-    <button id="contactBtn">Contact Me</button>
-    <button id="workBtn">Past Work</button>
-  </nav>
-</header>
+  <header>
+    <div id="pageTitle">About Me</div>
+    <nav>
+      <button id="aboutBtn" class="active">About Me</button>
+      <button id="contactBtn">Contact Me</button>
+      <button id="workBtn">Past Work</button>
+    </nav>
+  </header>
 
-<main>
-  <section id="aboutSection">
-    <h1>Hello, I'm ZW_12</h1>
-    <p>I’m a creative and efficient developer with 1 year of scripting experience, 3 months of commissions experience, and strong building skills in the Stud style. Do not think my experience will effect the results of my work I am still a very fast and reliable person to work with!.</p>
-  </section>
+  <main>
+    <section id="aboutSection">
+      <h1>Hello, I'm ZW_12</h1>
+      <p>I’m a creative and efficient developer with 1 year of scripting experience, 3 months of commissions experience, and strong building skills in the Stud style. Do not think my short experience will effect my preformance in any way, I will still be very fast and reliable.</p>
+    </section>
 
-  <section id="contactSection" class="hidden">
-    <h1>Contact Me</h1>
-    <form id="contactForm">
-      <input type="email" name="email" placeholder="Your Email" required />
-      <input type="text" name="discord" placeholder="Your Discord Username" required />
-      <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-      <button class="send-btn" type="submit">Send</button>
-      <div id="envelopeAnimation" class="envelope hidden">✉️</div>
-      <p id="status"></p>
-    </form>
-  </section>
+    <section id="contactSection" class="hidden">
+      <h1>Contact Me</h1>
+      <form id="contactForm">
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="text" name="discord" placeholder="Your Discord Username" required />
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button class="send-btn" type="submit">Send</button>
+        <div id="envelopeAnimation" class="envelope hidden">✉️</div>
+        <p id="status" class="status-text"></p>
+      </form>
+    </section>
 
-  <section id="workSection" class="hidden scrollable">
-    <h1>Past Work</h1>
-    <div class="project">
-      <img src="images/house.png" alt="House" class="project-img" />
-      <h2>Legacy Unbound</h2>
-      <p><strong>Task:</strong> Building</p>
-      <p><strong>Charged:</strong> R$400</p>
-      <a href="https://www.roblox.com/communities/418594346/Legacy-Unbound-Official-Studio#!/about" target="_blank" rel="noopener noreferrer">View Group</a>
-    </div>
-    <div class="project">
-      <img src="images/cabin.png" alt="CABIN" class="project-img" />
-      <h2>Legacy Unbound</h2>
-      <p><strong>Task:</strong> Building</p>
-      <p><strong>Charged:</strong> R$400</p>
-      <a href="https://www.roblox.com/communities/418594346/Legacy-Unbound-Official-Studio#!/about" target="_blank" rel="noopener noreferrer">View Group</a>
-    </div>
-  </section>
-</main>
+    <section id="workSection" class="hidden scrollable">
+      <h1>Past Work</h1>
+      <div class="project">
+        <img src="images/house.png" alt="House" class="project-img" />
+        <h2>Legacy Unbound</h2>
+        <p><strong>Task:</strong> Building</p>
+        <p><strong>Charged:</strong> R$400</p>
+        <a href="https://www.roblox.com/communities/418594346/Legacy-Unbound-Official-Studio#!/about" target="_blank">View Group</a>
+      </div>
+      <div class="project">
+        <img src="images/cabin.png" alt="Cabin" class="project-img" />
+        <h2>Legacy Unbound</h2>
+        <p><strong>Task:</strong> Building</p>
+        <p><strong>Charged:</strong> R$400</p>
+        <a href="https://www.roblox.com/communities/418594346/Legacy-Unbound-Official-Studio#!/about" target="_blank">View Group</a>
+      </div>
+    </section>
+  </main>
 
-<script>
-  const aboutBtn = document.getElementById("aboutBtn");
-  const contactBtn = document.getElementById("contactBtn");
-  const workBtn = document.getElementById("workBtn");
-  const aboutSection = document.getElementById("aboutSection");
-  const contactSection = document.getElementById("contactSection");
-  const workSection = document.getElementById("workSection");
-  const pageTitle = document.getElementById("pageTitle");
-  const contactForm = document.getElementById("contactForm");
-  const envelope = document.getElementById("envelopeAnimation");
-  const statusText = document.getElementById("status");
-
-  function showSection(sectionToShow, titleText, activeBtn) {
-    [aboutSection, contactSection, workSection].forEach(sec => sec.classList.add("hidden"));
-    sectionToShow.classList.remove("hidden");
-
-    [aboutBtn, contactBtn, workBtn].forEach(btn => btn.classList.remove("active"));
-    activeBtn.classList.add("active");
-
-    pageTitle.textContent = titleText;
-  }
-
-  aboutBtn.onclick = () => showSection(aboutSection, "About Me", aboutBtn);
-  contactBtn.onclick = () => showSection(contactSection, "Contact Me", contactBtn);
-  workBtn.onclick = () => showSection(workSection, "Past Work", workBtn);
-
-  contactForm.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    envelope.classList.remove("hidden");
-
-    const formData = new FormData(contactForm);
-    formData.append("_captcha", "false");
-    formData.append("_template", "table");
-
-    try {
-      const res = await fetch("https://formsubmit.co/ajax/xboxzacheus@gmail.com", {
-        method: "POST",
-        headers: { "Accept": "application/json" },
-        body: formData
-      });
-
-      if (res.ok) {
-        statusText.textContent = "Email sent successfully!";
-        contactForm.reset();
-      } else {
-        statusText.textContent = "Failed to send email. Try again.";
-      }
-    } catch (err) {
-      statusText.textContent = "An error occurred. Try again later.";
-    }
-
-    setTimeout(() => {
-      envelope.classList.add("hidden");
-    }, 1000);
-  });
-
-  showSection(aboutSection, "About Me", aboutBtn);
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
