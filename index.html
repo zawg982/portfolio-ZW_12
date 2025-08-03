@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZW_12 Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div id="pageTitle">About Me</div>
+    <nav>
+      <button id="aboutBtn" class="active">About Me</button>
+      <button id="contactBtn">Contact Me</button>
+      <button id="workBtn">Past Work</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="aboutSection">
+      <h1>Hello, I'm ZW_12</h1>
+      <p>I’m a creative and efficient developer with 1 year of scripting experience, 3 months of communication experience, and solid building skills in the Stud style. I focus on high-quality results over quantity of experience.</p>
+    </section>
+
+    <section id="contactSection" class="hidden">
+      <h1>Contact Me</h1>
+      <input type="email" id="email" placeholder="Your Email" required />
+      <input type="text" id="discord" placeholder="Your Discord Username" required />
+      <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+      <button class="send-btn" onclick="sendEmail()">Send</button>
+      <p id="status"></p>
+    </section>
+
+    <section id="workSection" class="hidden">
+      <h1>Past Work</h1>
+      <div class="project">
+        <h2>Example Project</h2>
+        <p>This is a placeholder for your past projects. You can list game links, images, or GitHub repos here.</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
