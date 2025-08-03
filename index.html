@@ -21,13 +21,15 @@
   <main>
     <section id="aboutSection">
       <h1>Hello, I'm ZW_12</h1>
-      <p>I’m a creative and efficient developer with 1 year scripting experience, etc.</p>
+      <p>I’m a creative and efficient developer with 1 year of scripting experience, 3 months of communication experience, and strong building skills in the Stud style. I prioritize results over how long I’ve been doing this.</p>
     </section>
 
     <section id="contactSection" class="hidden">
       <h1>Contact Me</h1>
       <form id="contactForm">
-        <!-- contact inputs -->
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="text" name="discord" placeholder="Your Discord Username" required />
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
         <button class="send-btn" type="submit">Send</button>
         <div id="envelopeAnimation" class="envelope hidden">✉️</div>
         <p id="status"></p>
@@ -36,18 +38,29 @@
 
     <section id="workSection" class="hidden scrollable">
       <h1>Past Work</h1>
-      <!-- your projects -->
+      <div class="project">
+        <img src="images/house.png" alt="House" class="project-img" />
+        <h2>Legacy Unbound</h2>
+        <p><strong>Task:</strong> Building</p>
+        <p><strong>Charged:</strong> R$400</p>
+        <a href="https://www.roblox.com/communities/418594346/Legacy-Unbound-Official-Studio#!/about" target="_blank">View Group</a>
+      </div>
+      <div class="project">
+        <img src="images/cabin.png" alt="Cabin" class="project-img" />
+        <h2>Legacy Unbound</h2>
+        <p><strong>Task:</strong> Building</p>
+        <p><strong>Charged:</strong> R$400</p>
+        <a href="https://www.roblox.com/communities/418594346/Legacy-Unbound-Official-Studio#!/about" target="_blank">View Group</a>
+      </div>
     </section>
 
     <section id="feedbackSection" class="hidden">
       <h1>Feedback</h1>
-      <div id="feedbackContainer">
-        <div id="feedbackList" class="feedback-list"></div>
-        <div class="feedback-input">
-          <input type="text" id="feedbackInput" placeholder="Leave feedback..." />
-          <button id="feedbackSend" class="send-btn">Send</button>
-        </div>
-      </div>
+      <form id="feedbackForm">
+        <textarea name="feedback" placeholder="Your feedback..." rows="4" required></textarea>
+        <button class="send-btn" type="submit">Submit</button>
+      </form>
+      <div id="feedbackList"></div>
     </section>
   </main>
 
