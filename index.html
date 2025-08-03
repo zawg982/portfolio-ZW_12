@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>ZW_12 Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
@@ -17,25 +17,38 @@
   </header>
 
   <main>
+    <!-- About -->
     <section id="aboutSection">
       <h1>Hello, I'm ZW_12</h1>
-      <p>I’m a creative and efficient developer with 1 year of scripting experience, 3 months of communication experience, and solid building skills in the Stud style. I focus on high-quality results over quantity of experience.</p>
+      <p>I’m a creative and efficient developer with 1 year of scripting experience, 3 months of communication experience, and strong building skills in the Stud style. I prioritize results over how long I’ve been doing this.</p>
     </section>
 
+    <!-- Contact -->
     <section id="contactSection" class="hidden">
       <h1>Contact Me</h1>
-      <input type="email" id="email" placeholder="Your Email" required />
-      <input type="text" id="discord" placeholder="Your Discord Username" required />
-      <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
-      <button class="send-btn" onclick="sendEmail()">Send</button>
-      <p id="status"></p>
+      <form id="contactForm" action="https://formspree.io/f/YOUR_ID_HERE" method="POST">
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="text" name="discord" placeholder="Your Discord Username" required />
+        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+        <button class="send-btn" type="submit">Send</button>
+        <p id="status"></p>
+      </form>
     </section>
 
-    <section id="workSection" class="hidden">
+    <!-- Past Work -->
+    <section id="workSection" class="hidden scrollable">
       <h1>Past Work</h1>
       <div class="project">
-        <h2>Example Project</h2>
-        <p>This is a placeholder for your past projects. You can list game links, images, or GitHub repos here.</p>
+        <h2>Zombie Survival Game</h2>
+        <p><strong>Task:</strong> Scripting</p>
+        <p><strong>Charged:</strong> $40</p>
+        <a href="https://www.roblox.com/groups/1234567" target="_blank">View Game/Group</a>
+      </div>
+      <div class="project">
+        <h2>Fantasy Building Showcase</h2>
+        <p><strong>Task:</strong> Building</p>
+        <p><strong>Charged:</strong> $30</p>
+        <a href="https://www.roblox.com/games/987654321" target="_blank">View Game</a>
       </div>
     </section>
   </main>
